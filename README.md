@@ -23,7 +23,7 @@ You don’t have to:
 `execve` will be the core part of your Shell, don’t forget to pass the environ to it…
 
 ```
-julien@ubuntu:~/shell$ ./shell 
+julien@ubuntu:~/shell$ ./shell
 #cisfun$ ls
 ./shell: No such file or directory
 #cisfun$ /bin/ls
@@ -42,7 +42,7 @@ julien@ubuntu:~/shell$ echo "/bin/ls" | ./shell
 barbie_j       env-main.c  exec.c  fork.c  pid.c  ppid.c    prompt   prompt.c  shell.c  stat.c         wait
 env-environ.c  exec    fork    mypid   ppid   printenv  promptc  shell     stat test_scripting.sh  wait.c
 #cisfun$ julien@ubuntu:~/shell$
-```   
+```
 <h1>2. Simple shell 0.2</h1>
 
 Simple shell 0.1 +
@@ -62,7 +62,7 @@ env-environ.c  exec    fork    mypid   ppid   printenv  promptc  shell     shell
 :) ls
 barbie_j       env-main.c  exec.c  fork.c  pid.c  ppid.c    prompt   prompt.c  shell_0.3  stat    test_scripting.sh  wait.c
 env-environ.c  exec    fork    mypid   ppid   printenv  promptc  shell     shell.c    stat.c  wait
-:) ls -l /tmp 
+:) ls -l /tmp
 total 20
 -rw------- 1 julien julien    0 Dec  5 12:09 config-err-aAMZrR
 drwx------ 3 root   root   4096 Dec  5 12:09 systemd-private-062a0eca7f2a44349733e78cb4abdff4-colord.service-V7DUzr
@@ -70,9 +70,9 @@ drwx------ 3 root   root   4096 Dec  5 12:09 systemd-private-062a0eca7f2a4434973
 drwx------ 3 root   root   4096 Dec  5 12:07 systemd-private-062a0eca7f2a44349733e78cb4abdff4-systemd-timesyncd.service-CdXUtH
 -rw-rw-r-- 1 julien julien    0 Dec  5 12:09 unity_support_test.0
 :) ^C
-julien@ubuntu:~/shell$ 
+julien@ubuntu:~/shell$
 ```
-    
+
 <h1>4. Simple shell 0.4</h1>
 
 Simple shell 0.3 +
@@ -101,7 +101,7 @@ TERM=xterm-256color
 PATH=/home/julien/bin:/home/julien/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
 DISPLAY=:0
 $ exit
-julien@ubuntu:~/shell$ 
+julien@ubuntu:~/shell$
 ```
 
 <h1>6. Simple shell 0.1.1</h1>
@@ -114,12 +114,12 @@ Simple shell 0.1 +
 You don’t have to:
 * be able to move the cursor
 
-    
+
 <h1>7. Simple shell 0.2.1</h1>
 
 Simple shell 0.2 +
 * You are not allowed to use `strtok`
-    
+
 <h1>8. Simple shell 0.4.1</h1>
 
 Simple shell 0.4 +
@@ -131,9 +131,9 @@ julien@ubuntu:~/shell$ ./shell_0.4.1
 $ exit 98
 julien@ubuntu:~/shell$ echo $?
 98
-julien@ubuntu:~/shell$ 
+julien@ubuntu:~/shell$
 ```
-    
+
 <h1>9. setenv, unsetenv</h1>
 
 Simple shell 1.0 +
@@ -147,7 +147,6 @@ Implement the `setenv` and `unsetenv` builtin commands
 *  Command syntax: `unsetenv VARIABLE`
 *  Should print something on stderr on failure
 
-    
 <h1>10. cd</h1>
 
 Simple shell 1.0 +
@@ -159,7 +158,7 @@ Implement the builtin command `cd`:
 * You have to handle the command `cd -`
 * You have to update the environment variable `PWD` when you change directory
 `man chdir`, `man getcwd`
-    
+
 <h1>11. ;</h1>
 
 Simple shell 1.0 +
@@ -182,7 +181,7 @@ backups  cache  crash  lib  local  lock  log  mail  metrics  opt  run  spool  tm
 backups  cache  crash  lib  local  lock  log  mail  metrics  opt  run  spool  tmp
 alex@~$
 ```
-    
+
 <h1>12. && and ||</h1>
 
 Simple shell 1.0 +
@@ -222,7 +221,7 @@ ls: cannot access /hbtn: No such file or directory
 backups  cache  crash  lib  local  lock  log  mail  metrics  opt  run  spool  tmp
 alex@~$
 ```
-    
+
 <h1>13. alias</h1>
 
 Simple shell 1.0 +
@@ -231,7 +230,7 @@ Simple shell 1.0 +
 *  `alias`:Prints a list of all aliases, one per line, in the form `name='value'`
 *  `alias name [name2 ...]`:Prints the aliases `name`, `name2`, etc 1 per line, in the form `name='value'`
 *  `alias name='value' [...]`:Defines an alias for each `name` whose `value` is given. If `name` is already an alias, replaces its value with `value`
-    
+
 <h1>14. Variables</h1>
 
 Simple shell 1.0 +
@@ -249,10 +248,10 @@ $ echo $$
 5104
 $ echo $PATH
 /home/julien/bin:/home/julien/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
-$ exit 
-julien@ubuntu:~/shell$ 
+$ exit
+julien@ubuntu:~/shell$
 ```
-    
+
 <h1> 15. Comments </h1>
 
 Simple shell 1.0 +
