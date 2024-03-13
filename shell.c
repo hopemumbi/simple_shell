@@ -4,6 +4,11 @@
 #include <string.h>
 #include <stdlib.h>
 #include <sys/wait.h>
+/**
+ * main - 1. Simple shell 0.1
+ *
+ * Return: always 0
+ */
 int main(void)
 {
 	char *lineptr = NULL;
@@ -13,7 +18,7 @@ int main(void)
 
 	/*display a prompt and wait for user to enter command*/
 	printf("$ ");
-	while(getline(&lineptr, &n, stdin) != -1)
+	while (getline(&lineptr, &n, stdin) != -1)
 	{
 		lineptr = strtok(lineptr, "\n");
 
@@ -21,6 +26,7 @@ int main(void)
 		if (child_pid == 0)
 		{
 			char *argv[] = {NULL, NULL};
+
 			argv[0] = lineptr;
 
 			if ((execve(argv[0], argv, NULL) == -1))
