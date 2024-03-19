@@ -9,7 +9,7 @@
  *
  * Return: always 0
  */
-int main(int ac, char **av, char **env)
+int main(int argc, char *argv[])
 {
 	ssize_t read;
 	char *lineptr = NULL;
@@ -31,28 +31,28 @@ int main(int ac, char **av, char **env)
 		lineptr = strtok(lineptr, "\n");
 		/*create a child process*/
 		child_pid = fork();
-		if (child_pid == 0)
+		if (child_pid == -1)
 		{
-			char *argv[] = {NULL, NULL};
+			perror("fork failed");
+			exit(EXIT_FAILURE);
 
-			argv[0] = lineptr;
+		}
+		else if (child_pid == 0)
+		{
+			char *newargv[] = {NULL, NULL};
+			char *newenviron[] = {NULL};
 
-			if ((execve(argv[0], argv, NULL) == -1))
+			newargv[0] = lineptr;
+
+			if (execve(lineptr, newargv, newenviron) == -1)
 			{
-				printf("%s: No such file or directory\n", av[ac - 1]);
-				exit(1);
+				printf("%s: No such file or directory\n", argv[argc - 1]);
+				exit(EXIT_FAILURE);
 			}
 		}
 		else
 		{
 			wait(&status);
-
-			printf("\nEnvironment: \n");
-			while (*env != NULL)
-			{
-				printf("%s\n", *env);
-				env++;
-			}
 		}
 	}
 	free(lineptr);
