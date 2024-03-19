@@ -9,9 +9,8 @@
  *
  * Return: always 0
  */
-int main(int argc, char *argv[])
+int main(int ac, char **av)
 {
-	ssize_t read;
 	char *lineptr = NULL;
 	size_t n = 0;
 	pid_t child_pid;
@@ -21,37 +20,33 @@ int main(int argc, char *argv[])
 	{
 		/*display a prompt and wait for user to enter command*/
 		printf("$ ");
+		fflush(stdout);
+
 		/*read a command line from user*/
-		read = getline(&lineptr, &n, stdin);
-		if (read == -1)
+		if (getline(&lineptr, &n, stdin) == -1)
 		{
+			printf("\n");
 			break;
 		}
+
 		/*remove the end of line*/
 		lineptr = strtok(lineptr, "\n");
+		
 		/*create a child process*/
 		child_pid = fork();
 		if (child_pid == -1)
 		{
-			perror("fork failed");
+			perror("fork");
 			exit(EXIT_FAILURE);
 
-		}
-		else if (child_pid == 0)
-		{
+		} else if (child_pid == 0) {
 			char *newargv[] = {NULL, NULL};
 			char *newenviron[] = {NULL};
-
 			newargv[0] = lineptr;
-
-			if (execve(lineptr, newargv, newenviron) == -1)
-			{
-				printf("%s: No such file or directory\n", argv[argc - 1]);
-				exit(EXIT_FAILURE);
-			}
-		}
-		else
-		{
+			execve(lineptr, newargv, newenviron);
+			perror(av[ac - 1]);
+			exit(EXIT_FAILURE);
+		} else {
 			wait(&status);
 		}
 	}
